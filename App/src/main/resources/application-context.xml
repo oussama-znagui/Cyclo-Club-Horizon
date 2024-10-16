@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/jee
+                           http://www.springframework.org/schema/jee/spring-jee.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/task
+                           http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <context:component-scan base-package="ma.znagui.app.*" />
+
+<!--    <tx:annotation-driven transaction-manager="transactionManager" />-->
+
+
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/cch"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="Azerty@"/>
+        <property name="maximumPoolSize" value="10"/>
+    </bean>
+
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="ma.znagui.app.entity">
+<!--            <list>-->
+<!--                <value>ma.znagui.app.entity.Cycliste</value>-->
+<!--                <value>ma.znagui.app.entity.Phase</value>-->
+<!--                <value>ma.znagui.app.entity.PhaseResult</value>-->
+<!--                <value>ma.znagui.app.entity.Competition</value>-->
+<!--                <value>ma.znagui.app.entity.Team</value>-->
+<!--                <value>ma.znagui.app.entity.GeneralResult</value>-->
+<!--            </list>-->
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.use_sql_comments">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+
+<!--    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
+<!--        <property name="sessionFactory" ref="sessionFactory" />-->
+<!--&lt;!&ndash;        <tx:annotation-driven transaction-manager="transactionManager" />&ndash;&gt;-->
+<!--    </bean>-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+<!--    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
+
+<!--          p:sessionFactory-ref="sessionFactory">-->
+<!--        <property name="sessionFactory" ref="sessionFactory"/>-->
+
+<!--    </bean>-->
+
+</beans>

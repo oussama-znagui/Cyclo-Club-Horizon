@@ -17,7 +17,7 @@ public class Phase {
     @JoinColumn(name = "competition_id",nullable = false)
     private Competition competition;
 
-    @OneToMany(mappedBy = "pahse")
+    @OneToMany(mappedBy = "phase")
     private List<PhaseResult> phaseResults;
 
     public int getId() {

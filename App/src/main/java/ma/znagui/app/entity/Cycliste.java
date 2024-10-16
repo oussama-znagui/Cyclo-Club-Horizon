@@ -1,9 +1,6 @@
 package ma.znagui.app.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
 @Entity
@@ -20,6 +17,10 @@ public class Cycliste {
 
     @OneToMany(mappedBy = "cycliste")
     private List<PhaseResult> phaseResults;
+
+    @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
+    private Team team;
 
 
 

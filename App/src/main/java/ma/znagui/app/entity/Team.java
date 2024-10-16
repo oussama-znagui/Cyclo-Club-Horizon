@@ -14,7 +14,7 @@ public class Team {
     private String name;
     private String nationality;
 
-    @OneToMany(mappedBy = "team_id")
+    @OneToMany(mappedBy = "team")
     private List<Cycliste> cyclistes;
 
     public int getId() {
