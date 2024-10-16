@@ -1,4 +1,4 @@
-package ma.znagui;
+package ma.znagui.app;
 
 public class main {
     public static void main(String args[]){
