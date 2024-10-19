@@ -5,12 +5,14 @@ package ma.znagui.app.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Data
+
 
 public class Competition {
     @Id

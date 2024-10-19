@@ -1,20 +1,18 @@
 package ma.znagui.app.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.List;
 @Entity
-public class Team {
+public class Team implements Serializable {
     @Id
     @GeneratedValue
     private int id;
     private String name;
     private String nationality;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team",fetch = FetchType.EAGER)
     private List<Cycliste> cyclistes;
 
     public int getId() {

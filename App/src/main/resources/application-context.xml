@@ -37,7 +37,7 @@
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="ma.znagui.app.entity">
+        <property name="packagesToScan" value="ma.znagui.app">
 <!--            <list>-->
 <!--                <value>ma.znagui.app.entity.Cycliste</value>-->
 <!--                <value>ma.znagui.app.entity.Phase</value>-->
@@ -69,6 +69,11 @@
 
 <!--          p:sessionFactory-ref="sessionFactory">-->
 <!--        <property name="sessionFactory" ref="sessionFactory"/>-->
+
+<!--    </bean>-->
+
+
+<!--    <bean id="genericDao" class="ma.znagui.app.dao.impl.TeamDaoImpl">-->
 
 <!--    </bean>-->
 

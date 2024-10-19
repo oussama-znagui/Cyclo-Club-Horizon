@@ -2,9 +2,10 @@ package ma.znagui.app.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.List;
 @Entity
-public class Cycliste {
+public class Cycliste implements Serializable {
     @Id
     @GeneratedValue
     private int id;
