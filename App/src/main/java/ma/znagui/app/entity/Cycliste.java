@@ -9,6 +9,15 @@ public class Cycliste implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
     private String firstName;
     private String lastName;
     private int age;
