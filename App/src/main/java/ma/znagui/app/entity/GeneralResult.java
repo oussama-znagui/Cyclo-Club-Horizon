@@ -2,10 +2,11 @@ package ma.znagui.app.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
 @Entity
-public class GeneralResult {
+public class GeneralResult implements Serializable {
     @EmbeddedId
     private GeneralResultKey id;
     private LocalTime generalTime;

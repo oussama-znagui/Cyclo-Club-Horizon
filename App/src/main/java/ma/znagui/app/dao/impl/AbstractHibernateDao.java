@@ -21,8 +21,9 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements Ge
 
     public AbstractHibernateDao(Class<T> className) {
         clazz = className;
-    } public void
-    setClazz(final Class<T> clazzToSet) {
+    }
+
+    public void setClazz(final Class<T> clazzToSet) {
         clazz = Preconditions.checkNotNull(clazzToSet);
     }
     //----------------------------------------------------------------------------------

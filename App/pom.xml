@@ -7,6 +7,8 @@
     <groupId>org.example</groupId>
     <artifactId>App</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -16,22 +18,43 @@
 
     <dependencies>
 
+
+
+<!--        spring dependencies-->
+
+
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>6.1.11</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>6.1.13</version>
+            <version>6.1.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>6.1.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>6.1.11</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>6.1.13</version>
+            <version>6.1.11</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>6.1.13</version>
-        </dependency>
+
+<!--            persistance dep-->
+
 
         <dependency>
             <groupId>org.hibernate.orm</groupId>
@@ -60,17 +83,21 @@
             <scope>provided</scope>
         </dependency>
 
+
+<!--        autre-->
+
+
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>1.2.2</version>
         </dependency>
 
-        <!-- Apache Commons Pool (DBCP dépend de cela) -->
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
-            <version>2.11.0</version> <!-- Utilisez la version appropriée -->
+            <version>2.11.0</version>
         </dependency>
 
         <dependency>
@@ -89,6 +116,49 @@
             <version>32.1.2-jre</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>32.1.2-jre</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

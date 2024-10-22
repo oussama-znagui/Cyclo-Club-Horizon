@@ -5,8 +5,8 @@ package ma.znagui.app.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,11 +14,21 @@ import java.util.List;
 @Data
 
 
-public class Competition {
+public class Competition implements Serializable {
     @Id
     @GeneratedValue
     private int id;
     private String title ;
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    private String place;
     private int year;
     private LocalDate startDate;
     private LocalDate endDate;
