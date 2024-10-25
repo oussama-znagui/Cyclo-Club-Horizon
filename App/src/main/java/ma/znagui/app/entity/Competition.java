@@ -19,15 +19,6 @@ public class Competition implements Serializable {
     @GeneratedValue
     private int id;
     private String title ;
-
-    public String getPlace() {
-        return place;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
-    }
-
     private String place;
     private int year;
     private LocalDate startDate;
@@ -95,5 +86,13 @@ public class Competition implements Serializable {
 
     public void setPhases(List<Phase> phases) {
         this.phases = phases;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 }

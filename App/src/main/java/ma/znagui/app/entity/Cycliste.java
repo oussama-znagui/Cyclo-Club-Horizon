@@ -10,13 +10,7 @@ public class Cycliste implements Serializable {
     @GeneratedValue
     private int id;
 
-    public Team getTeam() {
-        return team;
-    }
 
-    public void setTeam(Team team) {
-        this.team = team;
-    }
 
     private String firstName;
     private String lastName;
@@ -28,11 +22,20 @@ public class Cycliste implements Serializable {
     @OneToMany(mappedBy = "cycliste")
     private List<PhaseResult> phaseResults;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 
 
+    public Cycliste(String firstName, String lastName, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+
+    public Cycliste() {
+
+    }
 
     public int getId() {
         return id;
@@ -80,5 +83,26 @@ public class Cycliste implements Serializable {
 
     public void setPhaseResults(List<PhaseResult> phaseResults) {
         this.phaseResults = phaseResults;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    @Override
+    public String toString() {
+        return "Cycliste{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", generalResults=" + generalResults +
+                ", phaseResults=" + phaseResults +
+                ", team=" + team.getName() +
+                '}';
     }
 }
