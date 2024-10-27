@@ -2,10 +2,11 @@ package ma.znagui.app.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
 @Entity
-public class PhaseResult {
+public class PhaseResult implements Serializable {
     @EmbeddedId
     private PhaseResultKey id;
     private LocalTime phaseTime;
@@ -63,6 +64,14 @@ public class PhaseResult {
         this.id = id;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "PhaseResult{" +
+                "id=" + id.getcyclisteId() + id.getphaseId() +
+                ", phaseTime=" + phaseTime +
+                ", phaseRang=" + phaseRang +
+                ", phase=" + phase.getCompetition().getTitle() +
+                ", cycliste=" + cycliste.getFirstName() +
+                '}';
+    }
 }

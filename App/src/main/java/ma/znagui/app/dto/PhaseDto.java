@@ -1,25 +1,14 @@
-package ma.znagui.app.entity;
+package ma.znagui.app.dto;
 
-import jakarta.persistence.*;
-
-import java.io.Serializable;
 import java.time.LocalTime;
-import java.util.List;
-@Entity
-public class Phase implements Serializable {
-    @Id
-    @GeneratedValue
+
+public class PhaseDto {
     private int id;
     private String title;
     private String startLocation;
     private String endLocation;
     private LocalTime startTime;
-    @ManyToOne
-    @JoinColumn(name = "competition_id",nullable = false)
-    private Competition competition;
-
-    @OneToMany(mappedBy = "phase")
-    private List<PhaseResult> phaseResults;
+    private CompetitionDTO competition;
 
     public int getId() {
         return id;
@@ -61,19 +50,11 @@ public class Phase implements Serializable {
         this.startTime = startTime;
     }
 
-    public Competition getCompetition() {
+    public CompetitionDTO getCompetition() {
         return competition;
     }
 
-    public void setCompetition(Competition competition) {
+    public void setCompetition(CompetitionDTO competition) {
         this.competition = competition;
-    }
-
-    public List<PhaseResult> getPhaseResults() {
-        return phaseResults;
-    }
-
-    public void setPhaseResults(List<PhaseResult> phaseResults) {
-        this.phaseResults = phaseResults;
     }
 }

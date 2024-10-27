@@ -33,7 +33,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements Ge
     public Optional<T> findOne(final long id) {
         Session s = sessionFactory.openSession();
 
-        return Optional.of((T) s.get(clazz, id));
+        return Optional.ofNullable((T) s.get(clazz, id));
     }
     //----------------------------------------------------------------------------------
     public List<T> findAll() {
@@ -46,6 +46,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements Ge
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
+            System.out.println("allo");
             session.persist(entity);
             transaction.commit();
         } catch (Exception e) {

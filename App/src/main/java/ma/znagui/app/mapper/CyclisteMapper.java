@@ -21,7 +21,7 @@ public abstract class CyclisteMapper {
     @Mapping(target = "team", expression = "java(getTeam(dto.getTeamID()))")
     public abstract Cycliste createAndUpdateDTOtoCycliste(CyclisteCreateAndUpdateDTO dto);
 
-    @Mapping(target = "team", expression = "java(teamMapper.teamToTeamDTO(c.getTeam()))")
+        @Mapping(target = "team", expression = "java(teamMapper.teamToTeamDTO(c.getTeam()))")
     public abstract CyclisteDTO cyclisteToCyclisteDTO(Cycliste c);
 
 

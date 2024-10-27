@@ -1,6 +1,7 @@
 package ma.znagui.app.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class CompetitionDTO {
     private int id;
@@ -9,6 +10,7 @@ public class CompetitionDTO {
     private int year;
     private LocalDate startDate;
     private LocalDate endDate;
+
 
     public int getId() {
         return id;
