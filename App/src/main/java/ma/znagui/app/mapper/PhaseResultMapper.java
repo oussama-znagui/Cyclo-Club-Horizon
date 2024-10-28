@@ -3,10 +3,7 @@ package ma.znagui.app.mapper;
 import ma.znagui.app.dao.CyclisteDao;
 import ma.znagui.app.dao.PhaseDao;
 import ma.znagui.app.dao.PhaseResultDao;
-import ma.znagui.app.dto.PhaseCreateAndUpdateDto;
-import ma.znagui.app.dto.PhaseDto;
-import ma.znagui.app.dto.PhaseResultCreateDto;
-import ma.znagui.app.dto.PhaseResultDto;
+import ma.znagui.app.dto.*;
 import ma.znagui.app.entity.*;
 import ma.znagui.app.exeption.ResourceNotFoundException;
 import org.mapstruct.Mapper;
@@ -35,6 +32,17 @@ public abstract class PhaseResultMapper {
     })
     public abstract PhaseResult createDtoToPhaseResult(PhaseResultCreateDto dto);
 
+
+    @Mappings({
+            @Mapping(target = "phase", expression = "java(getPhase(dto.getPhaseID()))"),
+            @Mapping(target = "cycliste", expression = "java(getCycliste(dto.getCyclisteID()))"),
+            @Mapping(target = "id", expression = "java(createKey2(dto))")
+
+    })
+    public abstract PhaseResult addTimeDTOtoResult(PhaseResultAddTimeDTO dto);
+
+
+
     @Mappings({
             @Mapping(target = "phase", expression = "java(phaseMapper.phaseToPhaseDTO(phaseResult.getPhase()))"),
             @Mapping(target = "cycliste", expression = "java(cyclisteMapper.cyclisteToCyclisteDTO(phaseResult.getCycliste()))")
@@ -54,6 +62,13 @@ public abstract class PhaseResultMapper {
 
     }
     protected PhaseResultKey createKey(PhaseResultCreateDto dto) {
+        PhaseResultKey key = new PhaseResultKey();
+        key.setphaseId(dto.getPhaseID());
+        key.setcyclisteId(dto.getCyclisteID());
+        return key;
+    }
+
+    protected PhaseResultKey createKey2(PhaseResultAddTimeDTO dto) {
         PhaseResultKey key = new PhaseResultKey();
         key.setphaseId(dto.getPhaseID());
         key.setcyclisteId(dto.getCyclisteID());
